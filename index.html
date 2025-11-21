@@ -48,12 +48,13 @@
         <script src="data/Comptencescolairesyndicale_6.js"></script>
         <script src="data/Comptencescolaireintercommunale_7.js"></script>
         <script src="data/Comptencescolairecommunale_8.js"></script>
-        <script src="data/Circonscriptionsscolaires_9.js"></script>
-        <script src="data/Circonscriptionslgislatives_10.js"></script>
-        <script src="data/EPCIduDoubs_11.js"></script>
-        <script src="data/Arrondissements_12.js"></script>
-        <script src="data/Communes_13.js"></script>
-        <script src="data/Doubs_14.js"></script>
+        <script src="data/Cartescolairedescollges_9.js"></script>
+        <script src="data/Circonscriptionsscolaires_10.js"></script>
+        <script src="data/Circonscriptionslgislatives_11.js"></script>
+        <script src="data/EPCIduDoubs_12.js"></script>
+        <script src="data/Arrondissements_13.js"></script>
+        <script src="data/Communes_14.js"></script>
+        <script src="data/Doubs_15.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -72,8 +73,8 @@
             highlightLayer.openPopup();
         }
         var map = L.map('map', {
-            zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[46.260556373440245,4.93214040172904],[47.97648927733951,7.772829001202125]]);
+            zoomControl:false, maxZoom:28, minZoom:5
+        }).fitBounds([[45.12421155528856,3.5243601046004134],[48.63139639499208,10.631932818020363]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -207,7 +208,7 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(241,247,160,1.0)',
+                fillColor: 'rgba(243,255,67,1.0)',
                 interactive: false,
             }
         }
@@ -842,14 +843,14 @@
             return {
                 pane: 'pane_Comptencescolairesyndicale_6',
                 opacity: 1,
-                color: 'rgba(0,91,20,0.55)',
+                color: 'rgba(35,35,35,0.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(0,91,20,0.38176470588235295)',
+                fillColor: 'rgba(48,130,43,0.55)',
                 interactive: false,
             }
         }
@@ -949,7 +950,7 @@
             return {
                 pane: 'pane_Comptencescolaireintercommunale_7',
                 opacity: 1,
-                color: 'rgba(255,209,222,0.55)',
+                color: 'rgba(35,35,35,0.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
@@ -1056,14 +1057,14 @@
             return {
                 pane: 'pane_Comptencescolairecommunale_8',
                 opacity: 1,
-                color: 'rgba(243,190,123,0.55)',
+                color: 'rgba(35,35,35,0.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(243,190,123,0.55)',
+                fillColor: 'rgba(253,191,111,0.55)',
                 interactive: false,
             }
         }
@@ -1081,7 +1082,7 @@
         });
         bounds_group.addLayer(layer_Comptencescolairecommunale_8);
         map.addLayer(layer_Comptencescolairecommunale_8);
-        function pop_Circonscriptionsscolaires_9(feature, layer) {
+        function pop_Cartescolairedescollges_9(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1101,7 +1102,22 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2"><strong>layer</strong><br />' + (feature.properties['layer'] !== null ? autolinker.link(String(feature.properties['layer']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['UAI_CLG'] !== null ? autolinker.link(String(feature.properties['UAI_CLG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Nom_Colleg</strong><br />' + (feature.properties['Nom_Colleg'] !== null ? autolinker.link(String(feature.properties['Nom_Colleg']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Reseau_Edu'] !== null ? autolinker.link(String(feature.properties['Reseau_Edu']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Territoire'] !== null ? autolinker.link(String(feature.properties['Territoire']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['layer'] !== null ? autolinker.link(String(feature.properties['layer']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['path'] !== null ? autolinker.link(String(feature.properties['path']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1111,9 +1127,77 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Circonscriptionsscolaires_9_0() {
+        function style_Cartescolairedescollges_9_0() {
             return {
-                pane: 'pane_Circonscriptionsscolaires_9',
+                pane: 'pane_Cartescolairedescollges_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,180,60,0.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Cartescolairedescollges_9');
+        map.getPane('pane_Cartescolairedescollges_9').style.zIndex = 409;
+        map.getPane('pane_Cartescolairedescollges_9').style['mix-blend-mode'] = 'normal';
+        var layer_Cartescolairedescollges_9 = new L.geoJson(json_Cartescolairedescollges_9, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Cartescolairedescollges_9',
+            layerName: 'layer_Cartescolairedescollges_9',
+            pane: 'pane_Cartescolairedescollges_9',
+            onEachFeature: pop_Cartescolairedescollges_9,
+            style: style_Cartescolairedescollges_9_0,
+        });
+        bounds_group.addLayer(layer_Cartescolairedescollges_9);
+        map.addLayer(layer_Cartescolairedescollges_9);
+        function pop_Circonscriptionsscolaires_10(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (var i in e.target._eventParents) {
+                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
+                            e.target._eventParents[i].resetStyle(e.target);
+                        }
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RCirco'] !== null ? autolinker.link(String(feature.properties['RCirco']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RTerritoir'] !== null ? autolinker.link(String(feature.properties['RTerritoir']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['layer'] !== null ? autolinker.link(String(feature.properties['layer']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['path'] !== null ? autolinker.link(String(feature.properties['path']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Circonscriptionsscolaires_10_0() {
+            return {
+                pane: 'pane_Circonscriptionsscolaires_10',
                 opacity: 1,
                 color: 'rgba(227,26,28,1.0)',
                 dashArray: '',
@@ -1123,24 +1207,24 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(227,26,28,0.0)',
-                interactive: true,
+                interactive: false,
             }
         }
-        map.createPane('pane_Circonscriptionsscolaires_9');
-        map.getPane('pane_Circonscriptionsscolaires_9').style.zIndex = 409;
-        map.getPane('pane_Circonscriptionsscolaires_9').style['mix-blend-mode'] = 'normal';
-        var layer_Circonscriptionsscolaires_9 = new L.geoJson(json_Circonscriptionsscolaires_9, {
+        map.createPane('pane_Circonscriptionsscolaires_10');
+        map.getPane('pane_Circonscriptionsscolaires_10').style.zIndex = 410;
+        map.getPane('pane_Circonscriptionsscolaires_10').style['mix-blend-mode'] = 'normal';
+        var layer_Circonscriptionsscolaires_10 = new L.geoJson(json_Circonscriptionsscolaires_10, {
             attribution: '',
-            interactive: true,
-            dataVar: 'json_Circonscriptionsscolaires_9',
-            layerName: 'layer_Circonscriptionsscolaires_9',
-            pane: 'pane_Circonscriptionsscolaires_9',
-            onEachFeature: pop_Circonscriptionsscolaires_9,
-            style: style_Circonscriptionsscolaires_9_0,
+            interactive: false,
+            dataVar: 'json_Circonscriptionsscolaires_10',
+            layerName: 'layer_Circonscriptionsscolaires_10',
+            pane: 'pane_Circonscriptionsscolaires_10',
+            onEachFeature: pop_Circonscriptionsscolaires_10,
+            style: style_Circonscriptionsscolaires_10_0,
         });
-        bounds_group.addLayer(layer_Circonscriptionsscolaires_9);
-        map.addLayer(layer_Circonscriptionsscolaires_9);
-        function pop_Circonscriptionslgislatives_10(feature, layer) {
+        bounds_group.addLayer(layer_Circonscriptionsscolaires_10);
+        map.addLayer(layer_Circonscriptionsscolaires_10);
+        function pop_Circonscriptionslgislatives_11(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1170,9 +1254,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Circonscriptionslgislatives_10_0() {
+        function style_Circonscriptionslgislatives_11_0() {
             return {
-                pane: 'pane_Circonscriptionslgislatives_10',
+                pane: 'pane_Circonscriptionslgislatives_11',
                 opacity: 1,
                 color: 'rgba(255,127,0,1.0)',
                 dashArray: '',
@@ -1185,21 +1269,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Circonscriptionslgislatives_10');
-        map.getPane('pane_Circonscriptionslgislatives_10').style.zIndex = 410;
-        map.getPane('pane_Circonscriptionslgislatives_10').style['mix-blend-mode'] = 'normal';
-        var layer_Circonscriptionslgislatives_10 = new L.geoJson(json_Circonscriptionslgislatives_10, {
+        map.createPane('pane_Circonscriptionslgislatives_11');
+        map.getPane('pane_Circonscriptionslgislatives_11').style.zIndex = 411;
+        map.getPane('pane_Circonscriptionslgislatives_11').style['mix-blend-mode'] = 'normal';
+        var layer_Circonscriptionslgislatives_11 = new L.geoJson(json_Circonscriptionslgislatives_11, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Circonscriptionslgislatives_10',
-            layerName: 'layer_Circonscriptionslgislatives_10',
-            pane: 'pane_Circonscriptionslgislatives_10',
-            onEachFeature: pop_Circonscriptionslgislatives_10,
-            style: style_Circonscriptionslgislatives_10_0,
+            dataVar: 'json_Circonscriptionslgislatives_11',
+            layerName: 'layer_Circonscriptionslgislatives_11',
+            pane: 'pane_Circonscriptionslgislatives_11',
+            onEachFeature: pop_Circonscriptionslgislatives_11,
+            style: style_Circonscriptionslgislatives_11_0,
         });
-        bounds_group.addLayer(layer_Circonscriptionslgislatives_10);
-        map.addLayer(layer_Circonscriptionslgislatives_10);
-        function pop_EPCIduDoubs_11(feature, layer) {
+        bounds_group.addLayer(layer_Circonscriptionslgislatives_11);
+        map.addLayer(layer_Circonscriptionslgislatives_11);
+        function pop_EPCIduDoubs_12(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1229,9 +1313,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_EPCIduDoubs_11_0() {
+        function style_EPCIduDoubs_12_0() {
             return {
-                pane: 'pane_EPCIduDoubs_11',
+                pane: 'pane_EPCIduDoubs_12',
                 opacity: 1,
                 color: 'rgba(51,160,44,1.0)',
                 dashArray: '',
@@ -1244,21 +1328,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_EPCIduDoubs_11');
-        map.getPane('pane_EPCIduDoubs_11').style.zIndex = 411;
-        map.getPane('pane_EPCIduDoubs_11').style['mix-blend-mode'] = 'normal';
-        var layer_EPCIduDoubs_11 = new L.geoJson(json_EPCIduDoubs_11, {
+        map.createPane('pane_EPCIduDoubs_12');
+        map.getPane('pane_EPCIduDoubs_12').style.zIndex = 412;
+        map.getPane('pane_EPCIduDoubs_12').style['mix-blend-mode'] = 'normal';
+        var layer_EPCIduDoubs_12 = new L.geoJson(json_EPCIduDoubs_12, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_EPCIduDoubs_11',
-            layerName: 'layer_EPCIduDoubs_11',
-            pane: 'pane_EPCIduDoubs_11',
-            onEachFeature: pop_EPCIduDoubs_11,
-            style: style_EPCIduDoubs_11_0,
+            dataVar: 'json_EPCIduDoubs_12',
+            layerName: 'layer_EPCIduDoubs_12',
+            pane: 'pane_EPCIduDoubs_12',
+            onEachFeature: pop_EPCIduDoubs_12,
+            style: style_EPCIduDoubs_12_0,
         });
-        bounds_group.addLayer(layer_EPCIduDoubs_11);
-        map.addLayer(layer_EPCIduDoubs_11);
-        function pop_Arrondissements_12(feature, layer) {
+        bounds_group.addLayer(layer_EPCIduDoubs_12);
+        map.addLayer(layer_EPCIduDoubs_12);
+        function pop_Arrondissements_13(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1288,9 +1372,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Arrondissements_12_0() {
+        function style_Arrondissements_13_0() {
             return {
-                pane: 'pane_Arrondissements_12',
+                pane: 'pane_Arrondissements_13',
                 opacity: 1,
                 color: 'rgba(188,22,166,1.0)',
                 dashArray: '2.0,1.0',
@@ -1303,21 +1387,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Arrondissements_12');
-        map.getPane('pane_Arrondissements_12').style.zIndex = 412;
-        map.getPane('pane_Arrondissements_12').style['mix-blend-mode'] = 'normal';
-        var layer_Arrondissements_12 = new L.geoJson(json_Arrondissements_12, {
+        map.createPane('pane_Arrondissements_13');
+        map.getPane('pane_Arrondissements_13').style.zIndex = 413;
+        map.getPane('pane_Arrondissements_13').style['mix-blend-mode'] = 'normal';
+        var layer_Arrondissements_13 = new L.geoJson(json_Arrondissements_13, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Arrondissements_12',
-            layerName: 'layer_Arrondissements_12',
-            pane: 'pane_Arrondissements_12',
-            onEachFeature: pop_Arrondissements_12,
-            style: style_Arrondissements_12_0,
+            dataVar: 'json_Arrondissements_13',
+            layerName: 'layer_Arrondissements_13',
+            pane: 'pane_Arrondissements_13',
+            onEachFeature: pop_Arrondissements_13,
+            style: style_Arrondissements_13_0,
         });
-        bounds_group.addLayer(layer_Arrondissements_12);
-        map.addLayer(layer_Arrondissements_12);
-        function pop_Communes_13(feature, layer) {
+        bounds_group.addLayer(layer_Arrondissements_13);
+        map.addLayer(layer_Arrondissements_13);
+        function pop_Communes_14(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1347,9 +1431,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Communes_13_0() {
+        function style_Communes_14_0() {
             return {
-                pane: 'pane_Communes_13',
+                pane: 'pane_Communes_14',
                 opacity: 1,
                 color: 'rgba(227,221,221,0.0)',
                 dashArray: '',
@@ -1362,21 +1446,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Communes_13');
-        map.getPane('pane_Communes_13').style.zIndex = 413;
-        map.getPane('pane_Communes_13').style['mix-blend-mode'] = 'normal';
-        var layer_Communes_13 = new L.geoJson(json_Communes_13, {
+        map.createPane('pane_Communes_14');
+        map.getPane('pane_Communes_14').style.zIndex = 414;
+        map.getPane('pane_Communes_14').style['mix-blend-mode'] = 'normal';
+        var layer_Communes_14 = new L.geoJson(json_Communes_14, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Communes_13',
-            layerName: 'layer_Communes_13',
-            pane: 'pane_Communes_13',
-            onEachFeature: pop_Communes_13,
-            style: style_Communes_13_0,
+            dataVar: 'json_Communes_14',
+            layerName: 'layer_Communes_14',
+            pane: 'pane_Communes_14',
+            onEachFeature: pop_Communes_14,
+            style: style_Communes_14_0,
         });
-        bounds_group.addLayer(layer_Communes_13);
-        map.addLayer(layer_Communes_13);
-        function pop_Doubs_14(feature, layer) {
+        bounds_group.addLayer(layer_Communes_14);
+        map.addLayer(layer_Communes_14);
+        function pop_Doubs_15(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1418,9 +1502,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Doubs_14_0() {
+        function style_Doubs_15_0() {
             return {
-                pane: 'pane_Doubs_14',
+                pane: 'pane_Doubs_15',
                 opacity: 1,
                 color: 'rgba(67,69,65,1.0)',
                 dashArray: '',
@@ -1433,27 +1517,28 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_Doubs_14');
-        map.getPane('pane_Doubs_14').style.zIndex = 414;
-        map.getPane('pane_Doubs_14').style['mix-blend-mode'] = 'normal';
-        var layer_Doubs_14 = new L.geoJson(json_Doubs_14, {
+        map.createPane('pane_Doubs_15');
+        map.getPane('pane_Doubs_15').style.zIndex = 415;
+        map.getPane('pane_Doubs_15').style['mix-blend-mode'] = 'normal';
+        var layer_Doubs_15 = new L.geoJson(json_Doubs_15, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Doubs_14',
-            layerName: 'layer_Doubs_14',
-            pane: 'pane_Doubs_14',
-            onEachFeature: pop_Doubs_14,
-            style: style_Doubs_14_0,
+            dataVar: 'json_Doubs_15',
+            layerName: 'layer_Doubs_15',
+            pane: 'pane_Doubs_15',
+            onEachFeature: pop_Doubs_15,
+            style: style_Doubs_15_0,
         });
-        bounds_group.addLayer(layer_Doubs_14);
-        map.addLayer(layer_Doubs_14);
+        bounds_group.addLayer(layer_Doubs_15);
+        map.addLayer(layer_Doubs_15);
         var overlaysTree = [
-            {label: '<img src="legend/Doubs_14.png" /> Doubs', layer: layer_Doubs_14},
-            {label: '<img src="legend/Communes_13.png" /> Communes', layer: layer_Communes_13},
-            {label: '<img src="legend/Arrondissements_12.png" /> Arrondissements', layer: layer_Arrondissements_12},
-            {label: '<img src="legend/EPCIduDoubs_11.png" /> EPCI du Doubs', layer: layer_EPCIduDoubs_11},
-            {label: '<img src="legend/Circonscriptionslgislatives_10.png" /> Circonscriptions législatives', layer: layer_Circonscriptionslgislatives_10},
-            {label: '<img src="legend/Circonscriptionsscolaires_9.png" /> Circonscriptions scolaires', layer: layer_Circonscriptionsscolaires_9},
+            {label: '<img src="legend/Doubs_15.png" /> Doubs', layer: layer_Doubs_15},
+            {label: '<img src="legend/Communes_14.png" /> Communes', layer: layer_Communes_14},
+            {label: '<img src="legend/Arrondissements_13.png" /> Arrondissements', layer: layer_Arrondissements_13},
+            {label: '<img src="legend/EPCIduDoubs_12.png" /> EPCI du Doubs', layer: layer_EPCIduDoubs_12},
+            {label: '<img src="legend/Circonscriptionslgislatives_11.png" /> Circonscriptions législatives', layer: layer_Circonscriptionslgislatives_11},
+            {label: '<img src="legend/Circonscriptionsscolaires_10.png" /> Circonscriptions scolaires', layer: layer_Circonscriptionsscolaires_10},
+            {label: '<img src="legend/Cartescolairedescollges_9.png" /> Carte scolaire des collèges', layer: layer_Cartescolairedescollges_9},
             {label: '<img src="legend/Comptencescolairecommunale_8.png" /> Compétence scolaire communale', layer: layer_Comptencescolairecommunale_8},
             {label: '<img src="legend/Comptencescolaireintercommunale_7.png" /> Compétence scolaire intercommunale', layer: layer_Comptencescolaireintercommunale_7},
             {label: '<img src="legend/Comptencescolairesyndicale_6.png" /> Compétence scolaire syndicale', layer: layer_Comptencescolairesyndicale_6},
@@ -1536,13 +1621,13 @@
                         });
                     }
                 }
-                if (map.hasLayer(layer_EPCIduDoubs_11)) {
+                if (map.hasLayer(layer_EPCIduDoubs_12)) {
                     if (map.getZoom() <= 19 && map.getZoom() >= 19) {
-                        layer_EPCIduDoubs_11.eachLayer(function (layer) {
+                        layer_EPCIduDoubs_12.eachLayer(function (layer) {
                             layer.openTooltip();
                         });
                     } else {
-                        layer_EPCIduDoubs_11.eachLayer(function (layer) {
+                        layer_EPCIduDoubs_12.eachLayer(function (layer) {
                             layer.closeTooltip();
                         });
                     }
@@ -1560,19 +1645,19 @@
                         });
                     }
                 }
-                if (map.hasLayer(layer_EPCIduDoubs_11)) {
+                if (map.hasLayer(layer_EPCIduDoubs_12)) {
                     if (map.getZoom() <= 19 && map.getZoom() >= 19) {
-                        layer_EPCIduDoubs_11.eachLayer(function (layer) {
+                        layer_EPCIduDoubs_12.eachLayer(function (layer) {
                             layer.openTooltip();
                         });
                     } else {
-                        layer_EPCIduDoubs_11.eachLayer(function (layer) {
+                        layer_EPCIduDoubs_12.eachLayer(function (layer) {
                             layer.closeTooltip();
                         });
                     }
                 }
         map.addControl(new L.Control.Search({
-            layer: layer_Communes_13,
+            layer: layer_Communes_14,
             initial: false,
             hideMarkerOnCollapse: true,
             propertyName: 'libelle'}));
@@ -1581,15 +1666,15 @@
         } else {
             document.getElementsByClassName('search-button')[1].className += ' fa fa-binoculars';
         }
-        resetLabels([layer_PrimtredesTerritoiresEducatifsRuraux_0,layer_EPCIduDoubs_11,layer_Communes_13]);
+        resetLabels([layer_PrimtredesTerritoiresEducatifsRuraux_0,layer_Cartescolairedescollges_9,layer_EPCIduDoubs_12,layer_Communes_14]);
         map.on("zoomend", function(){
-            resetLabels([layer_PrimtredesTerritoiresEducatifsRuraux_0,layer_EPCIduDoubs_11,layer_Communes_13]);
+            resetLabels([layer_PrimtredesTerritoiresEducatifsRuraux_0,layer_Cartescolairedescollges_9,layer_EPCIduDoubs_12,layer_Communes_14]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_PrimtredesTerritoiresEducatifsRuraux_0,layer_EPCIduDoubs_11,layer_Communes_13]);
+            resetLabels([layer_PrimtredesTerritoiresEducatifsRuraux_0,layer_Cartescolairedescollges_9,layer_EPCIduDoubs_12,layer_Communes_14]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_PrimtredesTerritoiresEducatifsRuraux_0,layer_EPCIduDoubs_11,layer_Communes_13]);
+            resetLabels([layer_PrimtredesTerritoiresEducatifsRuraux_0,layer_Cartescolairedescollges_9,layer_EPCIduDoubs_12,layer_Communes_14]);
         });
         </script>        
     </body>

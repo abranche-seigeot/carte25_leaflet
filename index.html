@@ -74,7 +74,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:5
-        }).fitBounds([[45.12421155528856,3.5243601046004134],[48.63139639499208,10.631932818020363]]);
+        }).fitBounds([[46.675365625969576,5.491989225232667],[47.55000480290159,7.42378051184139]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -1102,22 +1102,7 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['UAI_CLG'] !== null ? autolinker.link(String(feature.properties['UAI_CLG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2"><strong>Nom_Colleg</strong><br />' + (feature.properties['Nom_Colleg'] !== null ? autolinker.link(String(feature.properties['Nom_Colleg']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Reseau_Edu'] !== null ? autolinker.link(String(feature.properties['Reseau_Edu']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Territoire'] !== null ? autolinker.link(String(feature.properties['Territoire']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['layer'] !== null ? autolinker.link(String(feature.properties['layer']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['path'] !== null ? autolinker.link(String(feature.properties['path']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1139,7 +1124,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(213,180,60,0.0)',
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_Cartescolairedescollges_9');
@@ -1147,7 +1132,7 @@
         map.getPane('pane_Cartescolairedescollges_9').style['mix-blend-mode'] = 'normal';
         var layer_Cartescolairedescollges_9 = new L.geoJson(json_Cartescolairedescollges_9, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_Cartescolairedescollges_9',
             layerName: 'layer_Cartescolairedescollges_9',
             pane: 'pane_Cartescolairedescollges_9',
@@ -1435,7 +1420,7 @@
             return {
                 pane: 'pane_Communes_14',
                 opacity: 1,
-                color: 'rgba(227,221,221,0.0)',
+                color: 'rgba(169,172,166,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
